@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DB" Class="DBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=DB;Integrated Security=True" SettingsObjectName="WindowsFormsApplication.Properties.Settings" SettingsPropertyName="DBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.login" Member="login">
+    <Type Name="login">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="userpass" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TimeTable" Member="TimeTable">
+    <Type Name="TimeTable">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BeginTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MainContent" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="IsFinished" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="TtpeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="typeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Type_TimeTable" Member="Type" ThisKey="TtpeId" OtherKey="Id" Type="Type" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Type" Member="Type">
+    <Type Name="Type">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TypeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Type_TimeTable" Member="TimeTable" ThisKey="Id" OtherKey="TtpeId" Type="TimeTable" />
+    </Type>
+  </Table>
+  <Table Name="dbo.rending" Member="rending">
+    <Type Name="rending">
+      <Column Name="BookName" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="BookWriter" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TypeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsFinish" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="FinishTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.FE" Member="FE">
+    <Type Name="FE">
+      <Column Name="name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="sex" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="birthday" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="professin" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="hobby" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="typeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="kind" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ContactWay" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>
